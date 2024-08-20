@@ -25,5 +25,4 @@ public class StaticQueueStack<T> extends ArrayStack<T>{
         top--;
         return data;
     }
-
 }

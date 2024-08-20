@@ -4,7 +4,6 @@ public abstract class ArrayStack <T> implements StackInterface<T>{
     protected T[] data;
 
     public abstract void push(T data);
-    public abstract T pop();
 
     public void clear(){
         while(top!=-1){
