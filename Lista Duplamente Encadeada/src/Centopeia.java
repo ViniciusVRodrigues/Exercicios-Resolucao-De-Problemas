@@ -12,6 +12,7 @@ public class Centopeia<T> {
         }
         Pata<T> novaPata = new Pata<T>(valor);
         topo.proximo = novaPata;
+        novaPata.anterior = topo;
         topo = novaPata;
         tamanho++;
     }
@@ -23,15 +24,14 @@ public class Centopeia<T> {
             return;
         }
         Pata<T> novaPata = new Pata<T>(valor);
-
         if(pataAtual.anterior!=null){
-            pataAtual.anterior.proximo = novaPata;
             novaPata.anterior = pataAtual.anterior;
-        }
-        novaPata.proximo = pataAtual;
-        pataAtual.anterior = novaPata;
-        if(pataAtual==base)
+            pataAtual.anterior.proximo = novaPata;
+        }else{
             base = novaPata;
+        }
+        pataAtual.anterior = novaPata;
+        novaPata.proximo = pataAtual;
         tamanho++;
     }
 
@@ -93,12 +93,17 @@ public class Centopeia<T> {
 
     T remove (int pos){
         Pata<T> pata = pegarPata(pos);
+        System.out.println("Removendo Pos "+pos+": "+pata.dado);
         if(pata==null)
             return null;
         if(pata.proximo!=null)
             pata.proximo.anterior = pata.anterior;
+        else
+            topo = pata.anterior;
         if(pata.anterior!=null)
             pata.anterior.proximo = pata.proximo;
+        else
+            base = pata.proximo;
         tamanho--;
         return pata.dado;
     }

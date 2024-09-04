@@ -16,11 +16,15 @@ public class Main {
 
         System.out.println("O valor 3 se encontra no indice: "+lDEncadeada.encontrar(3));
 
-        lDEncadeada.modificar(3, 10);
+        lDEncadeada.modificar(4, 10);
 
         lDEncadeada.verValores();
 
-        System.out.println("Pos 3 -"+lDEncadeada.pegar(3));
+        System.out.println("Pos 3 - "+lDEncadeada.pegar(3));
 
+        lDEncadeada.remove(3);
+        lDEncadeada.remove(0);
+
+        lDEncadeada.verValores();
     }
 }
